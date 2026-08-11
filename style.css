@@ -1,6 +1,5 @@
 /* ============================================================
    DAILYWHISK STYLE.CSS
-   COMPLETE VERSION
    ============================================================ */
 
 
@@ -12,11 +11,9 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
-
 
 body {
     margin: 0;
@@ -31,7 +28,6 @@ body {
     color: #222;
 }
 
-
 button {
     border: none;
 
@@ -40,11 +36,9 @@ button {
     font-family: inherit;
 }
 
-
 button:disabled {
     cursor: not-allowed;
 }
-
 
 
 /* ============================================================
@@ -68,11 +62,9 @@ button:disabled {
     background: #e9eee3;
 }
 
-
 .hero-content {
     max-width: 700px;
 }
-
 
 .hero h1 {
 
@@ -83,7 +75,6 @@ button:disabled {
     letter-spacing: 6px;
 }
 
-
 .hero p {
 
     margin: 12px 0;
@@ -91,14 +82,12 @@ button:disabled {
     font-size: 18px;
 }
 
-
 .hero-subtitle {
 
     font-weight: bold;
 
     letter-spacing: 2px;
 }
-
 
 .hero button {
 
@@ -114,7 +103,6 @@ button:disabled {
 
     font-weight: bold;
 }
-
 
 
 /* ============================================================
@@ -144,14 +132,12 @@ button:disabled {
     font-size: 20px;
 }
 
-
 #cart-count {
 
     font-size: 13px;
 
     font-weight: bold;
 }
-
 
 
 /* ============================================================
@@ -167,7 +153,6 @@ button:disabled {
     padding: 70px 25px;
 }
 
-
 .menu > h2:first-child {
 
     text-align: center;
@@ -177,7 +162,6 @@ button:disabled {
     margin-bottom: 60px;
 }
 
-
 .series-title {
 
     margin-top: 55px;
@@ -186,7 +170,6 @@ button:disabled {
 
     font-size: 26px;
 }
-
 
 .menu-grid {
 
@@ -203,7 +186,6 @@ button:disabled {
 
     gap: 25px;
 }
-
 
 
 /* ============================================================
@@ -237,13 +219,11 @@ button:disabled {
         filter 0.2s ease;
 }
 
-
 .drink-card:hover {
 
     transform:
         translateY(-4px);
 }
-
 
 .drink-card img {
 
@@ -258,7 +238,6 @@ button:disabled {
     border-radius: 15px;
 }
 
-
 .drink-card h3 {
 
     margin-top: 18px;
@@ -267,7 +246,6 @@ button:disabled {
 
     font-size: 20px;
 }
-
 
 .drink-card .price {
 
@@ -278,7 +256,6 @@ button:disabled {
     margin:
         8px 0 18px;
 }
-
 
 .drink-card button {
 
@@ -296,7 +273,6 @@ button:disabled {
 }
 
 
-
 /* ============================================================
    SOLD OUT
    ============================================================ */
@@ -309,12 +285,10 @@ button:disabled {
     opacity: 0.6;
 }
 
-
 .drink-card.sold-out:hover {
 
     transform: none;
 }
-
 
 .drink-card.sold-out::after {
 
@@ -351,7 +325,6 @@ button:disabled {
     text-align: center;
 }
 
-
 .drink-card.sold-out button,
 .drink-card button.sold-out-button {
 
@@ -363,7 +336,6 @@ button:disabled {
 
     cursor: not-allowed;
 }
-
 
 
 /* ============================================================
@@ -405,12 +377,10 @@ button:disabled {
     overflow-y: auto;
 }
 
-
 .cart.cart-open {
 
     right: 0;
 }
-
 
 .cart-header,
 .checkout-header {
@@ -425,13 +395,11 @@ button:disabled {
     margin-bottom: 25px;
 }
 
-
 .cart-header h2,
 .checkout-header h2 {
 
     margin: 0;
 }
-
 
 .cart-header button,
 .checkout-header button {
@@ -441,7 +409,6 @@ button:disabled {
 
     font-size: 22px;
 }
-
 
 
 /* ============================================================
@@ -456,7 +423,6 @@ button:disabled {
         1px solid #ddd;
 }
 
-
 .quantity-controls {
 
     display: flex;
@@ -467,7 +433,6 @@ button:disabled {
 
     margin-top: 10px;
 }
-
 
 .quantity-controls button {
 
@@ -481,7 +446,6 @@ button:disabled {
 }
 
 
-
 /* ============================================================
    CART SUMMARY
    ============================================================ */
@@ -490,7 +454,6 @@ button:disabled {
 
     margin-top: 30px;
 }
-
 
 .cart-total-row {
 
@@ -503,7 +466,6 @@ button:disabled {
 
     margin-bottom: 20px;
 }
-
 
 .cart-summary > button {
 
@@ -519,7 +481,6 @@ button:disabled {
 
     font-weight: bold;
 }
-
 
 
 /* ============================================================
@@ -561,12 +522,10 @@ button:disabled {
     overflow-y: auto;
 }
 
-
 .checkout.checkout-open {
 
     right: 0;
 }
-
 
 
 /* ============================================================
@@ -581,7 +540,6 @@ button:disabled {
         column;
 }
 
-
 #checkout-form label {
 
     margin-top: 15px;
@@ -590,7 +548,6 @@ button:disabled {
 
     font-weight: bold;
 }
-
 
 #checkout-form input,
 #checkout-form textarea,
@@ -610,12 +567,10 @@ button:disabled {
     background: white;
 }
 
-
 #checkout-form textarea {
 
     resize: vertical;
 }
-
 
 
 /* ============================================================
@@ -631,7 +586,6 @@ button:disabled {
     margin-bottom: 10px;
 }
 
-
 .order-type label {
 
     margin: 0 !important;
@@ -639,7 +593,6 @@ button:disabled {
     font-weight:
         normal !important;
 }
-
 
 
 /* ============================================================
@@ -659,24 +612,20 @@ button:disabled {
     border-radius: 15px;
 }
 
-
 .delivery-section.delivery-visible {
 
     display: block;
 }
-
 
 .delivery-section label {
 
     margin-top: 0 !important;
 }
 
-
 #delivery-area {
 
     cursor: pointer;
 }
-
 
 .delivery-fee-message {
 
@@ -686,7 +635,6 @@ button:disabled {
 
     color: #666;
 }
-
 
 
 /* ============================================================
@@ -699,7 +647,6 @@ button:disabled {
 
     gap: 15px;
 }
-
 
 .payment-option {
 
@@ -719,12 +666,10 @@ button:disabled {
     cursor: pointer;
 }
 
-
 .payment-option label {
 
     margin: 0;
 }
-
 
 
 /* ============================================================
@@ -744,7 +689,6 @@ button:disabled {
     text-align: center;
 }
 
-
 .qr-payment img {
 
     width: 220px;
@@ -753,7 +697,6 @@ button:disabled {
 
     border-radius: 10px;
 }
-
 
 
 /* ============================================================
@@ -771,14 +714,12 @@ button:disabled {
     border-radius: 15px;
 }
 
-
 .payment-proof-text {
 
     font-size: 14px;
 
     color: #666;
 }
-
 
 .payment-proof small {
 
@@ -788,7 +729,6 @@ button:disabled {
 
     color: #777;
 }
-
 
 
 /* ============================================================
@@ -806,7 +746,6 @@ button:disabled {
     border-radius: 15px;
 }
 
-
 .price-row {
 
     display: flex;
@@ -820,7 +759,6 @@ button:disabled {
 
     font-size: 15px;
 }
-
 
 .checkout-total {
 
@@ -840,7 +778,6 @@ button:disabled {
 
     font-size: 21px;
 }
-
 
 
 /* ============================================================
@@ -864,14 +801,12 @@ button:disabled {
     font-weight: bold;
 }
 
-
 #place-order-button:disabled {
 
     opacity: 0.6;
 
     cursor: not-allowed;
 }
-
 
 
 /* ============================================================
@@ -903,12 +838,10 @@ button:disabled {
         );
 }
 
-
 .confirmation.confirmation-open {
 
     display: flex;
 }
-
 
 .confirmation-box {
 
@@ -927,7 +860,6 @@ button:disabled {
     text-align: center;
 }
 
-
 .confirmation-box >
 #close-confirmation {
 
@@ -942,7 +874,6 @@ button:disabled {
 
     font-size: 22px;
 }
-
 
 .confirmation-icon {
 
@@ -967,7 +898,6 @@ button:disabled {
     font-size: 35px;
 }
 
-
 .confirmation-details {
 
     margin-top: 25px;
@@ -981,12 +911,10 @@ button:disabled {
     border-radius: 15px;
 }
 
-
 .confirmation-thanks {
 
     margin: 25px 0;
 }
-
 
 #back-to-menu {
 
@@ -1002,14 +930,11 @@ button:disabled {
 }
 
 
-
 /* ============================================================
    MOBILE
    ============================================================ */
 
-@media (
-    max-width: 600px
-) {
+@media (max-width: 600px) {
 
     .hero h1 {
 
