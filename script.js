@@ -1,19 +1,6 @@
 // ============================================================
 // DAILYWHISK JAVASCRIPT
-//
-// FEATURES:
-// MENU
-// SOLD OUT
-// DELIVERY AREAS
-// DELIVERY FEES
-// CART
-// CHECKOUT
-// PAYMENT
-// PAYMENT PROOF
-// GOOGLE SHEETS
-// SALES TRACKER
 // ============================================================
-
 
 
 // ============================================================
@@ -22,7 +9,6 @@
 
 const GOOGLE_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbxEG7zQD_rgJ_qnHuAeCSAu9gTE_BzhTc47TshzpiO3Zx-oyeLMdc0ssfzD7GswoX_g/exec";
-
 
 
 // ============================================================
@@ -40,112 +26,60 @@ let deliveryFee = 0;
 let selectedDeliveryArea = "";
 
 
-
 // ============================================================
 // ELEMENTS
 // ============================================================
 
 const cartItems =
-    document.getElementById(
-        "cart-items"
-    );
-
+    document.getElementById("cart-items");
 
 const cartTotal =
-    document.getElementById(
-        "cart-total"
-    );
-
+    document.getElementById("cart-total");
 
 const checkoutTotal =
-    document.getElementById(
-        "checkout-total"
-    );
-
+    document.getElementById("checkout-total");
 
 const checkoutSubtotal =
-    document.getElementById(
-        "checkout-subtotal"
-    );
-
+    document.getElementById("checkout-subtotal");
 
 const checkoutDeliveryFee =
-    document.getElementById(
-        "checkout-delivery-fee"
-    );
-
+    document.getElementById("checkout-delivery-fee");
 
 const cartButton =
-    document.getElementById(
-        "cart-button"
-    );
-
+    document.getElementById("cart-button");
 
 const closeCartButton =
-    document.getElementById(
-        "close-cart"
-    );
-
+    document.getElementById("close-cart");
 
 const checkoutButton =
-    document.getElementById(
-        "checkout-button"
-    );
-
+    document.getElementById("checkout-button");
 
 const closeCheckoutButton =
-    document.getElementById(
-        "close-checkout"
-    );
-
+    document.getElementById("close-checkout");
 
 const cartPanel =
-    document.querySelector(
-        ".cart"
-    );
-
+    document.querySelector(".cart");
 
 const checkoutPanel =
-    document.querySelector(
-        ".checkout"
-    );
-
+    document.querySelector(".checkout");
 
 const cartCount =
-    document.getElementById(
-        "cart-count"
-    );
-
+    document.getElementById("cart-count");
 
 const deliverySection =
-    document.getElementById(
-        "delivery-section"
-    );
-
+    document.getElementById("delivery-section");
 
 const deliveryAreaSelect =
-    document.getElementById(
-        "delivery-area"
-    );
-
+    document.getElementById("delivery-area");
 
 const deliveryFeeMessage =
-    document.getElementById(
-        "delivery-fee-message"
-    );
-
+    document.getElementById("delivery-fee-message");
 
 const addressField =
-    document.getElementById(
-        "customer-address"
-    );
-
+    document.getElementById("customer-address");
 
 const addressLabel =
-    document.getElementById(
-        "address-label"
-    );
-
+    document.getElementById("address-label");
 
 
 // ============================================================
@@ -162,20 +96,15 @@ async function loadWebsiteMenu() {
                 "?action=getMenu"
             );
 
-
         const menu =
             await response.json();
-
 
         console.log(
             "Website Menu:",
             menu
         );
 
-
-        if (
-            !Array.isArray(menu)
-        ) {
+        if (!Array.isArray(menu)) {
 
             console.error(
                 "Invalid menu data:",
@@ -186,13 +115,9 @@ async function loadWebsiteMenu() {
 
         }
 
-
-        websiteMenu =
-            menu;
-
+        websiteMenu = menu;
 
         updateWebsiteMenu();
-
 
     } catch (error) {
 
@@ -204,7 +129,6 @@ async function loadWebsiteMenu() {
     }
 
 }
-
 
 
 // ============================================================
@@ -221,20 +145,15 @@ async function loadDeliveryAreas() {
                 "?action=getDeliveryAreas"
             );
 
-
         const areas =
             await response.json();
-
 
         console.log(
             "Delivery Areas:",
             areas
         );
 
-
-        if (
-            !Array.isArray(areas)
-        ) {
+        if (!Array.isArray(areas)) {
 
             console.error(
                 "Invalid delivery area data:",
@@ -245,13 +164,9 @@ async function loadDeliveryAreas() {
 
         }
 
-
-        deliveryAreas =
-            areas;
-
+        deliveryAreas = areas;
 
         updateDeliveryDropdown();
-
 
     } catch (error) {
 
@@ -265,79 +180,53 @@ async function loadDeliveryAreas() {
 }
 
 
-
 // ============================================================
 // UPDATE DELIVERY DROPDOWN
 // ============================================================
 
 function updateDeliveryDropdown() {
 
-    if (
-        !deliveryAreaSelect
-    ) {
-
+    if (!deliveryAreaSelect) {
         return;
-
     }
 
-
     deliveryAreaSelect.innerHTML = `
-
         <option value="">
             Select your area
         </option>
-
     `;
-
 
     deliveryAreas.forEach(
         function(area) {
 
             const available =
-                String(
-                    area.available
-                )
-                .trim()
-                .toLowerCase();
+                String(area.available)
+                    .trim()
+                    .toLowerCase();
 
-
-            if (
-                available !== "yes"
-            ) {
-
+            if (available !== "yes") {
                 return;
-
             }
-
 
             const option =
                 document.createElement(
                     "option"
                 );
 
-
             option.value =
                 area.area;
-
 
             option.textContent =
                 area.area +
                 " — RM" +
-                Number(
-                    area.fee
-                ).toFixed(2);
-
+                Number(area.fee).toFixed(2);
 
             option.dataset.fee =
-                Number(
-                    area.fee
-                );
+                Number(area.fee);
 
-
-            deliveryAreaSelect
-                .appendChild(
-                    option
-                );
+            deliveryAreaSelect.appendChild(
+                option
+            );
 
         }
     );
@@ -345,87 +234,65 @@ function updateDeliveryDropdown() {
 }
 
 
-
 // ============================================================
 // DELIVERY AREA CHANGE
 // ============================================================
 
-if (
-    deliveryAreaSelect
-) {
+if (deliveryAreaSelect) {
 
-    deliveryAreaSelect
-        .addEventListener(
-            "change",
-            function() {
+    deliveryAreaSelect.addEventListener(
+        "change",
+        function() {
 
-                const selectedOption =
-                    this.options[
-                        this.selectedIndex
-                    ];
+            const selectedOption =
+                this.options[
+                    this.selectedIndex
+                ];
 
+            if (
+                !this.value ||
+                !selectedOption
+            ) {
 
-                if (
-                    !this.value ||
-                    !selectedOption
-                ) {
+                selectedDeliveryArea = "";
 
-                    selectedDeliveryArea =
-                        "";
+                deliveryFee = 0;
 
-                    deliveryFee =
-                        0;
+                if (deliveryFeeMessage) {
 
-
-                    if (
-                        deliveryFeeMessage
-                    ) {
-
-                        deliveryFeeMessage
-                            .textContent =
-                            "Please select your delivery area.";
-
-                    }
-
-
-                    updateCheckoutTotals();
-
-                    return;
+                    deliveryFeeMessage.textContent =
+                        "Please select your delivery area.";
 
                 }
-
-
-                selectedDeliveryArea =
-                    this.value;
-
-
-                deliveryFee =
-                    Number(
-                        selectedOption
-                            .dataset
-                            .fee
-                    ) || 0;
-
-
-                if (
-                    deliveryFeeMessage
-                ) {
-
-                    deliveryFeeMessage
-                        .textContent =
-                        "Delivery fee: RM" +
-                        deliveryFee.toFixed(2);
-
-                }
-
 
                 updateCheckoutTotals();
 
+                return;
+
             }
-        );
+
+            selectedDeliveryArea =
+                this.value;
+
+            deliveryFee =
+                Number(
+                    selectedOption.dataset.fee
+                ) || 0;
+
+            if (deliveryFeeMessage) {
+
+                deliveryFeeMessage.textContent =
+                    "Delivery fee: RM" +
+                    deliveryFee.toFixed(2);
+
+            }
+
+            updateCheckoutTotals();
+
+        }
+    );
 
 }
-
 
 
 // ============================================================
@@ -439,100 +306,62 @@ function updateWebsiteMenu() {
             ".drink-card"
         );
 
-
     drinkCards.forEach(
         function(card) {
 
             const nameElement =
-                card.querySelector(
-                    "h3"
-                );
+                card.querySelector("h3");
 
-
-            if (
-                !nameElement
-            ) {
-
+            if (!nameElement) {
                 return;
-
             }
 
-
             const drinkName =
-                nameElement
-                    .textContent
-                    .trim();
-
+                nameElement.textContent.trim();
 
             const menuItem =
                 websiteMenu.find(
                     function(item) {
 
                         return (
-                            String(
-                                item.drink
-                            )
-                            .trim()
-                            .toLowerCase() ===
-
-                            drinkName
-                                .toLowerCase()
+                            String(item.drink)
+                                .trim()
+                                .toLowerCase() ===
+                            drinkName.toLowerCase()
                         );
 
                     }
                 );
 
-
-            if (
-                !menuItem
-            ) {
-
+            if (!menuItem) {
                 return;
-
             }
 
 
-
-            // ------------------------------------------------
             // PRICE
-            // ------------------------------------------------
 
             const priceElement =
-                card.querySelector(
-                    ".price"
-                );
+                card.querySelector(".price");
 
-
-            if (
-                priceElement
-            ) {
+            if (priceElement) {
 
                 priceElement.textContent =
                     "RM" +
-                    Number(
-                        menuItem.price
-                    ).toFixed(2);
+                    Number(menuItem.price)
+                        .toFixed(2);
 
             }
 
 
-
-            // ------------------------------------------------
             // SOLD OUT
-            // ------------------------------------------------
 
             const isSoldOut =
-                String(
-                    menuItem.available
-                )
-                .trim()
-                .toLowerCase() ===
+                String(menuItem.available)
+                    .trim()
+                    .toLowerCase() ===
                 "sold out";
 
-
-            if (
-                isSoldOut
-            ) {
+            if (isSoldOut) {
 
                 card.classList.add(
                     "sold-out"
@@ -547,52 +376,32 @@ function updateWebsiteMenu() {
             }
 
 
-
-            // ------------------------------------------------
             // BUTTON
-            // ------------------------------------------------
 
             const button =
-                card.querySelector(
-                    "button"
-                );
+                card.querySelector("button");
 
-
-            if (
-                !button
-            ) {
-
+            if (!button) {
                 return;
-
             }
 
+            if (isSoldOut) {
 
-            if (
-                isSoldOut
-            ) {
-
-                button.disabled =
-                    true;
-
+                button.disabled = true;
 
                 button.textContent =
                     "SOLD OUT";
-
 
                 button.classList.add(
                     "sold-out-button"
                 );
 
-
             } else {
 
-                button.disabled =
-                    false;
-
+                button.disabled = false;
 
                 button.textContent =
                     "ADD TO CART";
-
 
                 button.classList.remove(
                     "sold-out-button"
@@ -606,14 +415,11 @@ function updateWebsiteMenu() {
 }
 
 
-
 // ============================================================
 // CART OPEN
 // ============================================================
 
-if (
-    cartButton
-) {
+if (cartButton) {
 
     cartButton.addEventListener(
         "click",
@@ -629,14 +435,11 @@ if (
 }
 
 
-
 // ============================================================
 // CART CLOSE
 // ============================================================
 
-if (
-    closeCartButton
-) {
+if (closeCartButton) {
 
     closeCartButton.addEventListener(
         "click",
@@ -650,7 +453,6 @@ if (
     );
 
 }
-
 
 
 // ============================================================
@@ -667,12 +469,9 @@ function addToCart(
             function(item) {
 
                 return (
-                    String(
-                        item.drink
-                    )
-                    .trim()
-                    .toLowerCase() ===
-
+                    String(item.drink)
+                        .trim()
+                        .toLowerCase() ===
                     drinkName
                         .trim()
                         .toLowerCase()
@@ -681,14 +480,11 @@ function addToCart(
             }
         );
 
-
     if (
         menuItem &&
-        String(
-            menuItem.available
-        )
-        .trim()
-        .toLowerCase() ===
+        String(menuItem.available)
+            .trim()
+            .toLowerCase() ===
         "sold out"
     ) {
 
@@ -700,7 +496,6 @@ function addToCart(
         return;
 
     }
-
 
 
     const existingItem =
@@ -716,12 +511,9 @@ function addToCart(
         );
 
 
-    if (
-        existingItem
-    ) {
+    if (existingItem) {
 
         existingItem.quantity++;
-
 
     } else {
 
@@ -731,9 +523,7 @@ function addToCart(
                 drinkName,
 
             price:
-                Number(
-                    drinkPrice
-                ),
+                Number(drinkPrice),
 
             quantity:
                 1
@@ -742,11 +532,9 @@ function addToCart(
 
     }
 
-
     updateCart();
 
 }
-
 
 
 // ============================================================
@@ -759,7 +547,6 @@ function connectDrinkButtons() {
         document.querySelectorAll(
             ".drink-card button"
         );
-
 
     buttons.forEach(
         function(button) {
@@ -774,7 +561,6 @@ function connectDrinkButtons() {
 
             }
 
-
             button.dataset
                 .dailywhiskConnected =
                 "true";
@@ -784,41 +570,28 @@ function connectDrinkButtons() {
                 "click",
                 function() {
 
-                    if (
-                        button.disabled
-                    ) {
-
+                    if (button.disabled) {
                         return;
-
                     }
-
 
                     const card =
                         button.closest(
                             ".drink-card"
                         );
 
-
-                    if (
-                        !card
-                    ) {
-
+                    if (!card) {
                         return;
-
                     }
-
 
                     const nameElement =
                         card.querySelector(
                             "h3"
                         );
 
-
                     const priceElement =
                         card.querySelector(
                             ".price"
                         );
-
 
                     if (
                         !nameElement ||
@@ -829,12 +602,10 @@ function connectDrinkButtons() {
 
                     }
 
-
                     const drinkName =
                         nameElement
                             .textContent
                             .trim();
-
 
                     const drinkPrice =
                         parseFloat(
@@ -846,7 +617,6 @@ function connectDrinkButtons() {
                                 )
                                 .trim()
                         );
-
 
                     addToCart(
                         drinkName,
@@ -862,32 +632,21 @@ function connectDrinkButtons() {
 }
 
 
-
 // ============================================================
 // UPDATE CART
 // ============================================================
 
 function updateCart() {
 
-    if (
-        !cartItems
-    ) {
-
+    if (!cartItems) {
         return;
-
     }
 
+    cartItems.innerHTML = "";
 
-    cartItems.innerHTML =
-        "";
+    let total = 0;
 
-
-    let total =
-        0;
-
-
-    let totalQuantity =
-        0;
+    let totalQuantity = 0;
 
 
     cart.forEach(
@@ -897,16 +656,13 @@ function updateCart() {
                 item.price *
                 item.quantity;
 
-
             const itemElement =
                 document.createElement(
                     "div"
                 );
 
-
             itemElement.className =
                 "cart-item";
-
 
             itemElement.innerHTML = `
 
@@ -942,15 +698,11 @@ function updateCart() {
 
             `;
 
-
             cartItems.appendChild(
                 itemElement
             );
 
-
-            total +=
-                itemTotal;
-
+            total += itemTotal;
 
             totalQuantity +=
                 item.quantity;
@@ -959,9 +711,7 @@ function updateCart() {
     );
 
 
-    if (
-        cart.length === 0
-    ) {
+    if (cart.length === 0) {
 
         cartItems.innerHTML =
             "<p>Your cart is empty.</p>";
@@ -969,9 +719,7 @@ function updateCart() {
     }
 
 
-    if (
-        cartTotal
-    ) {
+    if (cartTotal) {
 
         cartTotal.textContent =
             total.toFixed(2);
@@ -979,20 +727,16 @@ function updateCart() {
     }
 
 
-    if (
-        cartCount
-    ) {
+    if (cartCount) {
 
         cartCount.textContent =
             totalQuantity;
 
     }
 
-
     updateCheckoutTotals();
 
 }
-
 
 
 // ============================================================
@@ -1019,7 +763,6 @@ function getCartSubtotal() {
 }
 
 
-
 // ============================================================
 // UPDATE CHECKOUT TOTALS
 // ============================================================
@@ -1029,15 +772,12 @@ function updateCheckoutTotals() {
     const subtotal =
         getCartSubtotal();
 
-
     const total =
         subtotal +
         deliveryFee;
 
 
-    if (
-        checkoutSubtotal
-    ) {
+    if (checkoutSubtotal) {
 
         checkoutSubtotal.textContent =
             subtotal.toFixed(2);
@@ -1045,9 +785,7 @@ function updateCheckoutTotals() {
     }
 
 
-    if (
-        checkoutDeliveryFee
-    ) {
+    if (checkoutDeliveryFee) {
 
         checkoutDeliveryFee.textContent =
             deliveryFee.toFixed(2);
@@ -1055,9 +793,7 @@ function updateCheckoutTotals() {
     }
 
 
-    if (
-        checkoutTotal
-    ) {
+    if (checkoutTotal) {
 
         checkoutTotal.textContent =
             total.toFixed(2);
@@ -1067,52 +803,32 @@ function updateCheckoutTotals() {
 }
 
 
-
 // ============================================================
 // QUANTITY
 // ============================================================
 
-function increaseQuantity(
-    index
-) {
+function increaseQuantity(index) {
 
-    if (
-        !cart[index]
-    ) {
-
+    if (!cart[index]) {
         return;
-
     }
 
-
     cart[index].quantity++;
-
 
     updateCart();
 
 }
 
 
+function decreaseQuantity(index) {
 
-function decreaseQuantity(
-    index
-) {
-
-    if (
-        !cart[index]
-    ) {
-
+    if (!cart[index]) {
         return;
-
     }
-
 
     cart[index].quantity--;
 
-
-    if (
-        cart[index].quantity <= 0
-    ) {
+    if (cart[index].quantity <= 0) {
 
         cart.splice(
             index,
@@ -1121,11 +837,9 @@ function decreaseQuantity(
 
     }
 
-
     updateCart();
 
 }
-
 
 
 // ============================================================
@@ -1145,19 +859,12 @@ orderTypeButtons.forEach(
             "change",
             function() {
 
-
-                // ============================================
-                // DELIVERY
-                // ============================================
-
                 if (
                     this.value ===
                     "delivery"
                 ) {
 
-                    if (
-                        deliverySection
-                    ) {
+                    if (deliverySection) {
 
                         deliverySection
                             .classList.add(
@@ -1166,31 +873,19 @@ orderTypeButtons.forEach(
 
                     }
 
+                    if (addressField) {
 
-                    if (
-                        addressField
-                    ) {
-
-                        addressField
-                            .style
-                            .display =
+                        addressField.style.display =
                             "block";
 
-
-                        addressField
-                            .required =
+                        addressField.required =
                             true;
 
                     }
 
+                    if (addressLabel) {
 
-                    if (
-                        addressLabel
-                    ) {
-
-                        addressLabel
-                            .style
-                            .display =
+                        addressLabel.style.display =
                             "block";
 
                     }
@@ -1198,19 +893,12 @@ orderTypeButtons.forEach(
                 }
 
 
-
-                // ============================================
-                // PICKUP
-                // ============================================
-
                 if (
                     this.value ===
                     "pickup"
                 ) {
 
-                    if (
-                        deliverySection
-                    ) {
+                    if (deliverySection) {
 
                         deliverySection
                             .classList.remove(
@@ -1219,70 +907,47 @@ orderTypeButtons.forEach(
 
                     }
 
+                    selectedDeliveryArea = "";
 
-                    selectedDeliveryArea =
-                        "";
-
-
-                    deliveryFee =
-                        0;
+                    deliveryFee = 0;
 
 
-                    if (
-                        deliveryAreaSelect
-                    ) {
+                    if (deliveryAreaSelect) {
 
-                        deliveryAreaSelect
-                            .value =
+                        deliveryAreaSelect.value =
                             "";
 
                     }
 
 
-                    if (
-                        deliveryFeeMessage
-                    ) {
+                    if (deliveryFeeMessage) {
 
-                        deliveryFeeMessage
-                            .textContent =
+                        deliveryFeeMessage.textContent =
                             "Please select your delivery area.";
 
                     }
 
 
-                    if (
-                        addressField
-                    ) {
+                    if (addressField) {
 
-                        addressField
-                            .style
-                            .display =
+                        addressField.style.display =
                             "none";
 
-
-                        addressField
-                            .required =
+                        addressField.required =
                             false;
 
-
-                        addressField
-                            .value =
+                        addressField.value =
                             "";
 
                     }
 
 
-                    if (
-                        addressLabel
-                    ) {
+                    if (addressLabel) {
 
-                        addressLabel
-                            .style
-                            .display =
+                        addressLabel.style.display =
                             "none";
 
                     }
-
 
                     updateCheckoutTotals();
 
@@ -1295,22 +960,17 @@ orderTypeButtons.forEach(
 );
 
 
-
 // ============================================================
 // CHECKOUT
 // ============================================================
 
-if (
-    checkoutButton
-) {
+if (checkoutButton) {
 
     checkoutButton.addEventListener(
         "click",
         function() {
 
-            if (
-                cart.length === 0
-            ) {
+            if (cart.length === 0) {
 
                 alert(
                     "Your cart is empty."
@@ -1320,16 +980,13 @@ if (
 
             }
 
-
             cartPanel.classList.remove(
                 "cart-open"
             );
 
-
             checkoutPanel.classList.add(
                 "checkout-open"
             );
-
 
             updateCheckoutTotals();
 
@@ -1339,10 +996,7 @@ if (
 }
 
 
-
-if (
-    closeCheckoutButton
-) {
+if (closeCheckoutButton) {
 
     closeCheckoutButton.addEventListener(
         "click",
@@ -1358,7 +1012,6 @@ if (
 }
 
 
-
 // ============================================================
 // PAYMENT
 // ============================================================
@@ -1368,18 +1021,15 @@ const paymentButtons =
         'input[name="payment-method"]'
     );
 
-
 const qrPayment =
     document.getElementById(
         "qr-payment"
     );
 
-
 const paymentProof =
     document.getElementById(
         "payment-proof"
     );
-
 
 const paymentScreenshot =
     document.getElementById(
@@ -1394,39 +1044,26 @@ paymentButtons.forEach(
             "change",
             function() {
 
-
-                // ============================================
-                // QR PAYMENT
-                // ============================================
-
                 if (
                     this.value ===
                     "qr"
                 ) {
 
-                    if (
-                        qrPayment
-                    ) {
+                    if (qrPayment) {
 
                         qrPayment.style.display =
                             "block";
 
                     }
 
-
-                    if (
-                        paymentProof
-                    ) {
+                    if (paymentProof) {
 
                         paymentProof.style.display =
                             "block";
 
                     }
 
-
-                    if (
-                        paymentScreenshot
-                    ) {
+                    if (paymentScreenshot) {
 
                         paymentScreenshot.required =
                             true;
@@ -1436,43 +1073,29 @@ paymentButtons.forEach(
                 }
 
 
-
-                // ============================================
-                // CASH
-                // ============================================
-
                 if (
                     this.value ===
                     "cash"
                 ) {
 
-                    if (
-                        qrPayment
-                    ) {
+                    if (qrPayment) {
 
                         qrPayment.style.display =
                             "none";
 
                     }
 
-
-                    if (
-                        paymentProof
-                    ) {
+                    if (paymentProof) {
 
                         paymentProof.style.display =
                             "none";
 
                     }
 
-
-                    if (
-                        paymentScreenshot
-                    ) {
+                    if (paymentScreenshot) {
 
                         paymentScreenshot.required =
                             false;
-
 
                         paymentScreenshot.value =
                             "";
@@ -1488,24 +1111,17 @@ paymentButtons.forEach(
 );
 
 
-
 // ============================================================
 // FILE TO BASE64
 // ============================================================
 
-function fileToBase64(
-    file
-) {
+function fileToBase64(file) {
 
     return new Promise(
-        function(
-            resolve,
-            reject
-        ) {
+        function(resolve, reject) {
 
             const reader =
                 new FileReader();
-
 
             reader.onload =
                 function() {
@@ -1513,39 +1129,26 @@ function fileToBase64(
                     const result =
                         reader.result;
 
-
                     const base64 =
-                        result.split(
-                            ","
-                        )[1];
+                        result.split(",")[1];
 
-
-                    resolve(
-                        base64
-                    );
+                    resolve(base64);
 
                 };
-
 
             reader.onerror =
                 function(error) {
 
-                    reject(
-                        error
-                    );
+                    reject(error);
 
                 };
 
-
-            reader.readAsDataURL(
-                file
-            );
+            reader.readAsDataURL(file);
 
         }
     );
 
 }
-
 
 
 // ============================================================
@@ -1583,9 +1186,7 @@ async function sendOrderToGoogleSheets(
             }
         );
 
-
         return true;
-
 
     } catch (error) {
 
@@ -1594,13 +1195,11 @@ async function sendOrderToGoogleSheets(
             error
         );
 
-
         return false;
 
     }
 
 }
-
 
 
 // ============================================================
@@ -1613,9 +1212,7 @@ const checkoutForm =
     );
 
 
-if (
-    checkoutForm
-) {
+if (checkoutForm) {
 
     checkoutForm.addEventListener(
         "submit",
@@ -1623,11 +1220,6 @@ if (
 
             event.preventDefault();
 
-
-
-            // ================================================
-            // CUSTOMER
-            // ================================================
 
             const customerName =
                 document.getElementById(
@@ -1645,20 +1237,13 @@ if (
                 .trim();
 
 
-
-            // ================================================
-            // ORDER TYPE
-            // ================================================
-
             const selectedOrderType =
                 document.querySelector(
                     'input[name="order-type"]:checked'
                 );
 
 
-            if (
-                !selectedOrderType
-            ) {
+            if (!selectedOrderType) {
 
                 alert(
                     "Please select Pickup or Delivery."
@@ -1673,19 +1258,12 @@ if (
                 selectedOrderType.value;
 
 
-
-            // ================================================
-            // DELIVERY VALIDATION
-            // ================================================
-
             if (
                 orderType ===
                 "delivery"
             ) {
 
-                if (
-                    !selectedDeliveryArea
-                ) {
+                if (!selectedDeliveryArea) {
 
                     alert(
                         "Please select your delivery area."
@@ -1697,11 +1275,6 @@ if (
 
             }
 
-
-
-            // ================================================
-            // ADDRESS
-            // ================================================
 
             const address =
                 addressField
@@ -1724,11 +1297,6 @@ if (
             }
 
 
-
-            // ================================================
-            // NOTES
-            // ================================================
-
             const notes =
                 document.getElementById(
                     "customer-notes"
@@ -1737,20 +1305,13 @@ if (
                 .trim();
 
 
-
-            // ================================================
-            // PAYMENT
-            // ================================================
-
             const selectedPayment =
                 document.querySelector(
                     'input[name="payment-method"]:checked'
                 );
 
 
-            if (
-                !selectedPayment
-            ) {
+            if (!selectedPayment) {
 
                 alert(
                     "Please select a payment method."
@@ -1764,11 +1325,6 @@ if (
             const paymentMethod =
                 selectedPayment.value;
 
-
-
-            // ================================================
-            // PAYMENT PROOF
-            // ================================================
 
             let paymentProofData =
                 null;
@@ -1794,8 +1350,7 @@ if (
 
 
                 const file =
-                    paymentScreenshot
-                        .files[0];
+                    paymentScreenshot.files[0];
 
 
                 if (
@@ -1813,9 +1368,7 @@ if (
 
 
                 const base64 =
-                    await fileToBase64(
-                        file
-                    );
+                    await fileToBase64(file);
 
 
                 paymentProofData = {
@@ -1834,11 +1387,6 @@ if (
             }
 
 
-
-            // ================================================
-            // ITEMS TEXT
-            // ================================================
-
             const items =
                 cart
                     .map(
@@ -1852,15 +1400,8 @@ if (
 
                         }
                     )
-                    .join(
-                        ", "
-                    );
+                    .join(", ");
 
-
-
-            // ================================================
-            // TOTALS
-            // ================================================
 
             const subtotal =
                 getCartSubtotal();
@@ -1870,11 +1411,6 @@ if (
                 subtotal +
                 deliveryFee;
 
-
-
-            // ================================================
-            // ORDER DATA
-            // ================================================
 
             const orderData = {
 
@@ -1919,10 +1455,6 @@ if (
                 items:
                     items,
 
-                // IMPORTANT
-                // Complete cart sent to Apps Script
-                // for Sales Tracker.
-
                 cartItems:
                     cart.map(
                         function(item) {
@@ -1956,24 +1488,16 @@ if (
             };
 
 
-
-            // ================================================
-            // BUTTON
-            // ================================================
-
             const placeOrderButton =
                 document.getElementById(
                     "place-order-button"
                 );
 
 
-            if (
-                placeOrderButton
-            ) {
+            if (placeOrderButton) {
 
                 placeOrderButton.disabled =
                     true;
-
 
                 placeOrderButton.textContent =
                     "SENDING ORDER...";
@@ -1981,21 +1505,11 @@ if (
             }
 
 
-
-            // ================================================
-            // SEND
-            // ================================================
-
             const sent =
                 await sendOrderToGoogleSheets(
                     orderData
                 );
 
-
-
-            // ================================================
-            // CONFIRMATION
-            // ================================================
 
             const confirmation =
                 document.getElementById(
@@ -2039,10 +1553,7 @@ if (
                 );
 
 
-
-            if (
-                confirmationMessage
-            ) {
+            if (confirmationMessage) {
 
                 confirmationMessage.textContent =
                     sent
@@ -2054,10 +1565,7 @@ if (
             }
 
 
-
-            if (
-                confirmationType
-            ) {
+            if (confirmationType) {
 
                 confirmationType.textContent =
                     orderType === "pickup"
@@ -2067,10 +1575,7 @@ if (
             }
 
 
-
-            if (
-                confirmationArea
-            ) {
+            if (confirmationArea) {
 
                 confirmationArea.textContent =
                     orderType === "delivery"
@@ -2083,10 +1588,7 @@ if (
             }
 
 
-
-            if (
-                confirmationPayment
-            ) {
+            if (confirmationPayment) {
 
                 confirmationPayment.textContent =
                     paymentMethod === "qr"
@@ -2096,10 +1598,7 @@ if (
             }
 
 
-
-            if (
-                confirmationProof
-            ) {
+            if (confirmationProof) {
 
                 confirmationProof.textContent =
                     paymentMethod === "qr"
@@ -2109,10 +1608,7 @@ if (
             }
 
 
-
-            if (
-                confirmationTotal
-            ) {
+            if (confirmationTotal) {
 
                 confirmationTotal.textContent =
                     finalTotal.toFixed(2);
@@ -2120,10 +1616,7 @@ if (
             }
 
 
-
-            if (
-                checkoutPanel
-            ) {
+            if (checkoutPanel) {
 
                 checkoutPanel.classList.remove(
                     "checkout-open"
@@ -2132,10 +1625,7 @@ if (
             }
 
 
-
-            if (
-                confirmation
-            ) {
+            if (confirmation) {
 
                 confirmation.classList.add(
                     "confirmation-open"
@@ -2144,36 +1634,21 @@ if (
             }
 
 
-
-            // ================================================
-            // CLEAR CART
-            // ================================================
-
             cart = [];
 
-
             updateCart();
-
 
             checkoutForm.reset();
 
 
-
-            // ================================================
-            // RESET DELIVERY
-            // ================================================
-
             selectedDeliveryArea =
                 "";
-
 
             deliveryFee =
                 0;
 
 
-            if (
-                deliveryAreaSelect
-            ) {
+            if (deliveryAreaSelect) {
 
                 deliveryAreaSelect.value =
                     "";
@@ -2181,9 +1656,7 @@ if (
             }
 
 
-            if (
-                deliverySection
-            ) {
+            if (deliverySection) {
 
                 deliverySection
                     .classList.remove(
@@ -2193,29 +1666,18 @@ if (
             }
 
 
-            if (
-                deliveryFeeMessage
-            ) {
+            if (deliveryFeeMessage) {
 
-                deliveryFeeMessage
-                    .textContent =
+                deliveryFeeMessage.textContent =
                     "Please select your delivery area.";
 
             }
 
 
-
-            // ================================================
-            // RESET ADDRESS
-            // ================================================
-
-            if (
-                addressField
-            ) {
+            if (addressField) {
 
                 addressField.style.display =
                     "none";
-
 
                 addressField.required =
                     false;
@@ -2223,9 +1685,7 @@ if (
             }
 
 
-            if (
-                addressLabel
-            ) {
+            if (addressLabel) {
 
                 addressLabel.style.display =
                     "none";
@@ -2233,14 +1693,7 @@ if (
             }
 
 
-
-            // ================================================
-            // RESET PAYMENT
-            // ================================================
-
-            if (
-                qrPayment
-            ) {
+            if (qrPayment) {
 
                 qrPayment.style.display =
                     "block";
@@ -2248,9 +1701,7 @@ if (
             }
 
 
-            if (
-                paymentProof
-            ) {
+            if (paymentProof) {
 
                 paymentProof.style.display =
                     "block";
@@ -2258,9 +1709,7 @@ if (
             }
 
 
-            if (
-                paymentScreenshot
-            ) {
+            if (paymentScreenshot) {
 
                 paymentScreenshot.required =
                     true;
@@ -2268,18 +1717,10 @@ if (
             }
 
 
-
-            // ================================================
-            // RESET BUTTON
-            // ================================================
-
-            if (
-                placeOrderButton
-            ) {
+            if (placeOrderButton) {
 
                 placeOrderButton.disabled =
                     false;
-
 
                 placeOrderButton.textContent =
                     "PLACE ORDER";
@@ -2292,7 +1733,6 @@ if (
 }
 
 
-
 // ============================================================
 // CONFIRMATION CLOSE
 // ============================================================
@@ -2302,16 +1742,13 @@ const closeConfirmation =
         "close-confirmation"
     );
 
-
 const backToMenu =
     document.getElementById(
         "back-to-menu"
     );
 
 
-if (
-    closeConfirmation
-) {
+if (closeConfirmation) {
 
     closeConfirmation.addEventListener(
         "click",
@@ -2322,15 +1759,11 @@ if (
                     "confirmation"
                 );
 
+            if (confirmation) {
 
-            if (
-                confirmation
-            ) {
-
-                confirmation
-                    .classList.remove(
-                        "confirmation-open"
-                    );
+                confirmation.classList.remove(
+                    "confirmation-open"
+                );
 
             }
 
@@ -2340,10 +1773,7 @@ if (
 }
 
 
-
-if (
-    backToMenu
-) {
+if (backToMenu) {
 
     backToMenu.addEventListener(
         "click",
@@ -2354,18 +1784,13 @@ if (
                     "confirmation"
                 );
 
+            if (confirmation) {
 
-            if (
-                confirmation
-            ) {
-
-                confirmation
-                    .classList.remove(
-                        "confirmation-open"
-                    );
+                confirmation.classList.remove(
+                    "confirmation-open"
+                );
 
             }
-
 
             window.scrollTo({
 
@@ -2382,14 +1807,11 @@ if (
 }
 
 
-
 // ============================================================
 // INITIAL SETUP
 // ============================================================
 
-if (
-    qrPayment
-) {
+if (qrPayment) {
 
     qrPayment.style.display =
         "block";
@@ -2397,9 +1819,7 @@ if (
 }
 
 
-if (
-    paymentProof
-) {
+if (paymentProof) {
 
     paymentProof.style.display =
         "block";
@@ -2407,9 +1827,7 @@ if (
 }
 
 
-if (
-    paymentScreenshot
-) {
+if (paymentScreenshot) {
 
     paymentScreenshot.required =
         true;
@@ -2417,13 +1835,10 @@ if (
 }
 
 
-if (
-    addressField
-) {
+if (addressField) {
 
     addressField.style.display =
         "none";
-
 
     addressField.required =
         false;
@@ -2431,9 +1846,7 @@ if (
 }
 
 
-if (
-    addressLabel
-) {
+if (addressLabel) {
 
     addressLabel.style.display =
         "none";
@@ -2441,17 +1854,13 @@ if (
 }
 
 
-if (
-    deliverySection
-) {
+if (deliverySection) {
 
-    deliverySection
-        .classList.remove(
-            "delivery-visible"
-        );
+    deliverySection.classList.remove(
+        "delivery-visible"
+    );
 
 }
-
 
 
 // ============================================================
@@ -2461,7 +1870,6 @@ if (
 connectDrinkButtons();
 
 
-
 // ============================================================
 // LOAD GOOGLE SHEET DATA
 // ============================================================
@@ -2469,7 +1877,6 @@ connectDrinkButtons();
 loadWebsiteMenu();
 
 loadDeliveryAreas();
-
 
 
 // ============================================================
