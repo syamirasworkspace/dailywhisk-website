@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -89,7 +88,9 @@
 
 
 
-        <!-- MATCHA -->
+        <!-- =================================================
+             MATCHA SERIES
+        ================================================== -->
 
         <h2 class="series-title">
             Matcha Series
@@ -97,6 +98,8 @@
 
         <div class="menu-grid">
 
+
+            <!-- MATCHA LATTE -->
 
             <div class="drink-card">
 
@@ -123,10 +126,12 @@
 
 
 
+            <!-- MATCHA STRAWBERRY -->
+
             <div class="drink-card">
 
                 <img
-                    src="Images/matcha-latte.png"
+                    src="Images/matcha-strawberry.png"
                     alt="Matcha Strawberry"
                 >
 
@@ -148,10 +153,12 @@
 
 
 
+            <!-- MATCHA TARO -->
+
             <div class="drink-card">
 
                 <img
-                    src="Images/matcha-latte.png"
+                    src="Images/taro-latte.png"
                     alt="Matcha Taro Latte"
                 >
 
@@ -175,7 +182,9 @@
 
 
 
-        <!-- CHOCOLATE -->
+        <!-- =================================================
+             CHOCOLATE SERIES
+        ================================================== -->
 
         <h2 class="series-title">
             Chocolate Series
@@ -184,10 +193,12 @@
         <div class="menu-grid">
 
 
+            <!-- CHOCOLATE LATTE -->
+
             <div class="drink-card">
 
                 <img
-                    src="Images/matcha-latte.png"
+                    src="Images/chocolate-latte.png"
                     alt="Chocolate Latte"
                 >
 
@@ -209,10 +220,12 @@
 
 
 
+            <!-- STRAWBERRY CHOCOLATE -->
+
             <div class="drink-card">
 
                 <img
-                    src="Images/matcha-latte.png"
+                    src="Images/chocolate-latte.png"
                     alt="Strawberry Chocolate"
                 >
 
@@ -236,7 +249,9 @@
 
 
 
-        <!-- TARO -->
+        <!-- =================================================
+             TARO SERIES
+        ================================================== -->
 
         <h2 class="series-title">
             Taro Series
@@ -245,10 +260,12 @@
         <div class="menu-grid">
 
 
+            <!-- TARO LATTE -->
+
             <div class="drink-card">
 
                 <img
-                    src="Images/matcha-latte.png"
+                    src="Images/taro-latte.png"
                     alt="Taro Latte"
                 >
 
@@ -270,10 +287,12 @@
 
 
 
+            <!-- TARO CREAM -->
+
             <div class="drink-card">
 
                 <img
-                    src="Images/matcha-latte.png"
+                    src="Images/taro-latte.png"
                     alt="Taro Cream Latte"
                 >
 
@@ -380,7 +399,6 @@
         </div>
 
 
-
         <form id="checkout-form">
 
 
@@ -419,7 +437,6 @@
             <label>
                 Order Type
             </label>
-
 
             <div class="order-type">
 
@@ -460,12 +477,9 @@
                 class="delivery-section"
             >
 
-                <label
-                    for="delivery-area"
-                >
+                <label for="delivery-area">
                     Delivery Area
                 </label>
-
 
                 <select
                     id="delivery-area"
@@ -476,7 +490,6 @@
                     </option>
 
                 </select>
-
 
                 <p
                     id="delivery-fee-message"
@@ -498,7 +511,6 @@
                 Delivery Address
             </label>
 
-
             <textarea
                 id="customer-address"
                 placeholder="Enter your full address"
@@ -512,7 +524,6 @@
             <label for="customer-notes">
                 Notes
             </label>
-
 
             <textarea
                 id="customer-notes"
@@ -528,9 +539,7 @@
                 Payment Method
             </label>
 
-
             <div class="payment-options">
-
 
                 <label class="payment-option">
 
@@ -577,12 +586,10 @@
                     Scan to Pay
                 </h3>
 
-
                 <img
                     src="Images/payment-qr.jfif"
                     alt="DailyWhisk QR Payment"
                 >
-
 
                 <p>
                     Please scan the QR code to make payment.
@@ -599,25 +606,20 @@
                 id="payment-proof"
             >
 
-                <label
-                    for="payment-screenshot"
-                >
+                <label for="payment-screenshot">
                     Payment Proof
                 </label>
-
 
                 <p class="payment-proof-text">
                     Please upload a screenshot
                     of your payment.
                 </p>
 
-
                 <input
                     type="file"
                     id="payment-screenshot"
                     accept="image/png, image/jpeg, image/jpg, image/webp"
                 >
-
 
                 <small>
                     Accepted: JPG, JPEG, PNG or WEBP
@@ -631,7 +633,6 @@
 
             <div class="checkout-price-summary">
 
-
                 <div class="price-row">
 
                     <span>
@@ -639,9 +640,7 @@
                     </span>
 
                     <strong>
-                        RM<span id="checkout-subtotal">
-                            0.00
-                        </span>
+                        RM<span id="checkout-subtotal">0.00</span>
                     </strong>
 
                 </div>
@@ -654,9 +653,7 @@
                     </span>
 
                     <strong>
-                        RM<span id="checkout-delivery-fee">
-                            0.00
-                        </span>
+                        RM<span id="checkout-delivery-fee">0.00</span>
                     </strong>
 
                 </div>
@@ -669,9 +666,7 @@
                     </span>
 
                     <strong>
-                        RM<span id="checkout-total">
-                            0.00
-                        </span>
+                        RM<span id="checkout-total">0.00</span>
                     </strong>
 
                 </div>
@@ -733,66 +728,49 @@
 
             <div class="confirmation-details">
 
-
                 <p>
-
                     <strong>
                         Order Type:
                     </strong>
 
-                    <span id="confirmation-type">
-                    </span>
-
+                    <span id="confirmation-type"></span>
                 </p>
 
 
                 <p>
-
                     <strong>
                         Delivery Area:
                     </strong>
 
-                    <span id="confirmation-area">
-                    </span>
-
+                    <span id="confirmation-area"></span>
                 </p>
 
 
                 <p>
-
                     <strong>
                         Payment:
                     </strong>
 
-                    <span id="confirmation-payment">
-                    </span>
-
+                    <span id="confirmation-payment"></span>
                 </p>
 
 
                 <p>
-
                     <strong>
                         Payment Proof:
                     </strong>
 
-                    <span id="confirmation-proof">
-                    </span>
-
+                    <span id="confirmation-proof"></span>
                 </p>
 
 
                 <p>
-
                     <strong>
                         Total:
                     </strong>
 
-                    RM<span id="confirmation-total">
-                    </span>
-
+                    RM<span id="confirmation-total"></span>
                 </p>
-
 
             </div>
 
