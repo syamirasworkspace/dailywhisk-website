@@ -1,11 +1,12 @@
 /* ============================================================
    DAILYWHISK STYLE.CSS
-   ============================================================ */
+   FINAL RESPONSIVE VERSION
+============================================================ */
 
 
 /* ============================================================
    GLOBAL
-   ============================================================ */
+============================================================ */
 
 * {
     box-sizing: border-box;
@@ -43,10 +44,9 @@ button:disabled {
 
 /* ============================================================
    HERO
-   ============================================================ */
+============================================================ */
 
 .hero {
-
     min-height: 500px;
 
     display: flex;
@@ -67,7 +67,6 @@ button:disabled {
 }
 
 .hero h1 {
-
     margin: 0;
 
     font-size: 64px;
@@ -76,21 +75,18 @@ button:disabled {
 }
 
 .hero p {
-
     margin: 12px 0;
 
     font-size: 18px;
 }
 
 .hero-subtitle {
-
     font-weight: bold;
 
     letter-spacing: 2px;
 }
 
 .hero button {
-
     margin-top: 25px;
 
     padding: 14px 30px;
@@ -107,10 +103,9 @@ button:disabled {
 
 /* ============================================================
    CART BUTTON
-   ============================================================ */
+============================================================ */
 
 .cart-button {
-
     position: fixed;
 
     right: 25px;
@@ -133,7 +128,6 @@ button:disabled {
 }
 
 #cart-count {
-
     font-size: 13px;
 
     font-weight: bold;
@@ -142,10 +136,9 @@ button:disabled {
 
 /* ============================================================
    MENU
-   ============================================================ */
+============================================================ */
 
 .menu {
-
     max-width: 1200px;
 
     margin: auto;
@@ -154,7 +147,6 @@ button:disabled {
 }
 
 .menu > h2:first-child {
-
     text-align: center;
 
     font-size: 36px;
@@ -163,7 +155,6 @@ button:disabled {
 }
 
 .series-title {
-
     margin-top: 55px;
 
     margin-bottom: 25px;
@@ -172,7 +163,6 @@ button:disabled {
 }
 
 .menu-grid {
-
     display: grid;
 
     grid-template-columns:
@@ -190,10 +180,9 @@ button:disabled {
 
 /* ============================================================
    DRINK CARD
-   ============================================================ */
+============================================================ */
 
 .drink-card {
-
     position: relative;
 
     background: white;
@@ -220,13 +209,11 @@ button:disabled {
 }
 
 .drink-card:hover {
-
     transform:
         translateY(-4px);
 }
 
 .drink-card img {
-
     width: 100%;
 
     max-width: 220px;
@@ -236,10 +223,13 @@ button:disabled {
     object-fit: cover;
 
     border-radius: 15px;
+
+    display: block;
+
+    margin: 0 auto;
 }
 
 .drink-card h3 {
-
     margin-top: 18px;
 
     margin-bottom: 8px;
@@ -248,7 +238,6 @@ button:disabled {
 }
 
 .drink-card .price {
-
     font-size: 18px;
 
     font-weight: bold;
@@ -258,7 +247,6 @@ button:disabled {
 }
 
 .drink-card button {
-
     width: 100%;
 
     padding: 13px 15px;
@@ -275,10 +263,9 @@ button:disabled {
 
 /* ============================================================
    SOLD OUT
-   ============================================================ */
+============================================================ */
 
 .drink-card.sold-out {
-
     filter:
         grayscale(100%);
 
@@ -286,12 +273,10 @@ button:disabled {
 }
 
 .drink-card.sold-out:hover {
-
     transform: none;
 }
 
 .drink-card.sold-out::after {
-
     content: "SOLD OUT";
 
     position: absolute;
@@ -327,7 +312,6 @@ button:disabled {
 
 .drink-card.sold-out button,
 .drink-card button.sold-out-button {
-
     background: #555;
 
     color: white;
@@ -340,10 +324,9 @@ button:disabled {
 
 /* ============================================================
    CART
-   ============================================================ */
+============================================================ */
 
 .cart {
-
     position: fixed;
 
     top: 0;
@@ -378,13 +361,11 @@ button:disabled {
 }
 
 .cart.cart-open {
-
     right: 0;
 }
 
 .cart-header,
 .checkout-header {
-
     display: flex;
 
     justify-content:
@@ -397,13 +378,11 @@ button:disabled {
 
 .cart-header h2,
 .checkout-header h2 {
-
     margin: 0;
 }
 
 .cart-header button,
 .checkout-header button {
-
     background:
         transparent;
 
@@ -413,10 +392,9 @@ button:disabled {
 
 /* ============================================================
    CART ITEMS
-   ============================================================ */
+============================================================ */
 
 .cart-item {
-
     padding: 15px 0;
 
     border-bottom:
@@ -424,7 +402,6 @@ button:disabled {
 }
 
 .quantity-controls {
-
     display: flex;
 
     align-items: center;
@@ -435,7 +412,6 @@ button:disabled {
 }
 
 .quantity-controls button {
-
     width: 30px;
 
     height: 30px;
@@ -448,15 +424,13 @@ button:disabled {
 
 /* ============================================================
    CART SUMMARY
-   ============================================================ */
+============================================================ */
 
 .cart-summary {
-
     margin-top: 30px;
 }
 
 .cart-total-row {
-
     display: flex;
 
     justify-content:
@@ -468,7 +442,6 @@ button:disabled {
 }
 
 .cart-summary > button {
-
     width: 100%;
 
     padding: 15px;
@@ -485,10 +458,9 @@ button:disabled {
 
 /* ============================================================
    CHECKOUT
-   ============================================================ */
+============================================================ */
 
 .checkout {
-
     position: fixed;
 
     top: 0;
@@ -523,17 +495,15 @@ button:disabled {
 }
 
 .checkout.checkout-open {
-
     right: 0;
 }
 
 
 /* ============================================================
    FORM
-   ============================================================ */
+============================================================ */
 
 #checkout-form {
-
     display: flex;
 
     flex-direction:
@@ -541,7 +511,6 @@ button:disabled {
 }
 
 #checkout-form label {
-
     margin-top: 15px;
 
     margin-bottom: 7px;
@@ -549,10 +518,17 @@ button:disabled {
     font-weight: bold;
 }
 
-#checkout-form input,
+
+/* IMPORTANT:
+   Only normal form inputs get the large input styling.
+   Radio buttons are excluded.
+*/
+
+#checkout-form input[type="text"],
+#checkout-form input[type="tel"],
+#checkout-form input[type="file"],
 #checkout-form textarea,
 #checkout-form select {
-
     width: 100%;
 
     padding: 12px;
@@ -568,39 +544,68 @@ button:disabled {
 }
 
 #checkout-form textarea {
-
     resize: vertical;
 }
 
 
 /* ============================================================
+   RADIO BUTTONS
+============================================================ */
+
+/* FIXES THE HUGE RADIO BUTTON PROBLEM */
+
+#checkout-form input[type="radio"] {
+    width: 22px;
+
+    height: 22px;
+
+    padding: 0;
+
+    margin: 0;
+
+    flex: 0 0 auto;
+
+    accent-color: #222;
+
+    cursor: pointer;
+}
+
+
+/* ============================================================
    ORDER TYPE
-   ============================================================ */
+============================================================ */
 
 .order-type {
-
     display: flex;
 
-    gap: 20px;
+    align-items: center;
+
+    gap: 25px;
 
     margin-bottom: 10px;
 }
 
 .order-type label {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
 
     margin: 0 !important;
 
     font-weight:
         normal !important;
+
+    cursor: pointer;
 }
 
 
 /* ============================================================
    DELIVERY AREA
-   ============================================================ */
+============================================================ */
 
 .delivery-section {
-
     display: none;
 
     margin-top: 5px;
@@ -613,22 +618,18 @@ button:disabled {
 }
 
 .delivery-section.delivery-visible {
-
     display: block;
 }
 
 .delivery-section label {
-
     margin-top: 0 !important;
 }
 
 #delivery-area {
-
     cursor: pointer;
 }
 
 .delivery-fee-message {
-
     margin: 8px 0 0;
 
     font-size: 14px;
@@ -639,24 +640,24 @@ button:disabled {
 
 /* ============================================================
    PAYMENT
-   ============================================================ */
+============================================================ */
 
 .payment-options {
-
     display: flex;
 
     gap: 15px;
+
+    width: 100%;
 }
 
 .payment-option {
-
     display: flex;
 
     align-items: center;
 
     gap: 8px;
 
-    padding: 12px;
+    padding: 12px 15px;
 
     border:
         1px solid #ddd;
@@ -664,20 +665,28 @@ button:disabled {
     border-radius: 10px;
 
     cursor: pointer;
+
+    flex: 1;
+
+    min-width: 0;
 }
 
-.payment-option label {
+.payment-option span {
+    display: flex;
 
-    margin: 0;
+    align-items: center;
+
+    gap: 5px;
+
+    white-space: nowrap;
 }
 
 
 /* ============================================================
    QR PAYMENT
-   ============================================================ */
+============================================================ */
 
 .qr-payment {
-
     margin-top: 20px;
 
     padding: 20px;
@@ -690,21 +699,23 @@ button:disabled {
 }
 
 .qr-payment img {
-
     width: 220px;
 
     max-width: 100%;
 
     border-radius: 10px;
+
+    display: block;
+
+    margin: 0 auto;
 }
 
 
 /* ============================================================
    PAYMENT PROOF
-   ============================================================ */
+============================================================ */
 
 .payment-proof {
-
     margin-top: 20px;
 
     padding: 20px;
@@ -715,14 +726,12 @@ button:disabled {
 }
 
 .payment-proof-text {
-
     font-size: 14px;
 
     color: #666;
 }
 
 .payment-proof small {
-
     display: block;
 
     margin-top: 8px;
@@ -733,10 +742,9 @@ button:disabled {
 
 /* ============================================================
    PRICE SUMMARY
-   ============================================================ */
+============================================================ */
 
 .checkout-price-summary {
-
     margin-top: 25px;
 
     padding: 18px;
@@ -747,7 +755,6 @@ button:disabled {
 }
 
 .price-row {
-
     display: flex;
 
     justify-content:
@@ -761,7 +768,6 @@ button:disabled {
 }
 
 .checkout-total {
-
     display: flex;
 
     justify-content:
@@ -782,10 +788,9 @@ button:disabled {
 
 /* ============================================================
    PLACE ORDER
-   ============================================================ */
+============================================================ */
 
 #place-order-button {
-
     margin-top: 25px;
 
     padding: 15px;
@@ -802,7 +807,6 @@ button:disabled {
 }
 
 #place-order-button:disabled {
-
     opacity: 0.6;
 
     cursor: not-allowed;
@@ -811,10 +815,9 @@ button:disabled {
 
 /* ============================================================
    CONFIRMATION
-   ============================================================ */
+============================================================ */
 
 .confirmation {
-
     position: fixed;
 
     inset: 0;
@@ -839,12 +842,10 @@ button:disabled {
 }
 
 .confirmation.confirmation-open {
-
     display: flex;
 }
 
 .confirmation-box {
-
     position: relative;
 
     width: 500px;
@@ -860,9 +861,7 @@ button:disabled {
     text-align: center;
 }
 
-.confirmation-box >
-#close-confirmation {
-
+.confirmation-box > #close-confirmation {
     position: absolute;
 
     top: 15px;
@@ -876,7 +875,6 @@ button:disabled {
 }
 
 .confirmation-icon {
-
     width: 70px;
 
     height: 70px;
@@ -899,7 +897,6 @@ button:disabled {
 }
 
 .confirmation-details {
-
     margin-top: 25px;
 
     text-align: left;
@@ -912,12 +909,10 @@ button:disabled {
 }
 
 .confirmation-thanks {
-
     margin: 25px 0;
 }
 
 #back-to-menu {
-
     padding: 13px 25px;
 
     border-radius: 25px;
@@ -932,55 +927,220 @@ button:disabled {
 
 /* ============================================================
    MOBILE
-   ============================================================ */
+============================================================ */
 
 @media (max-width: 600px) {
 
-    .hero h1 {
-
-        font-size: 42px;
-
-    }
-
+    /* HERO */
 
     .hero {
-
         min-height: 420px;
 
+        padding:
+            50px 20px;
     }
 
+    .hero h1 {
+        font-size: 42px;
+
+        letter-spacing: 4px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+
+    /* CART BUTTON */
+
+    .cart-button {
+        width: 50px;
+
+        height: 50px;
+
+        right: 15px;
+
+        top: 15px;
+    }
+
+
+    /* MENU */
 
     .menu {
-
         padding:
             50px 15px;
-
     }
 
+    .menu > h2:first-child {
+        font-size: 30px;
 
-    .cart {
-
-        width: 100%;
-
-        max-width: 100%;
-
+        margin-bottom: 45px;
     }
 
+    .series-title {
+        font-size: 24px;
 
-    .checkout {
-
-        width: 100%;
-
-        max-width: 100%;
-
+        margin-top: 45px;
     }
-
 
     .menu-grid {
-
         grid-template-columns:
             1fr;
 
+        gap: 20px;
+    }
+
+
+    /* DRINK IMAGE */
+
+    .drink-card img {
+        max-width: 240px;
+
+        height: 240px;
+    }
+
+
+    /* CART */
+
+    .cart {
+        width: 100%;
+
+        max-width: 100%;
+
+        right: -100%;
+    }
+
+    .cart.cart-open {
+        right: 0;
+    }
+
+
+    /* CHECKOUT */
+
+    .checkout {
+        width: 100%;
+
+        max-width: 100%;
+
+        right: -100%;
+
+        padding:
+            25px 20px;
+    }
+
+    .checkout.checkout-open {
+        right: 0;
+    }
+
+
+    /* ORDER TYPE */
+
+    .order-type {
+        gap: 20px;
+
+        flex-wrap: wrap;
+    }
+
+
+    /* PAYMENT */
+
+    .payment-options {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .payment-option {
+        width: 100%;
+
+        flex: none;
+
+        padding: 14px;
+    }
+
+
+    /* RADIO BUTTONS */
+
+    #checkout-form input[type="radio"] {
+        width: 22px;
+
+        height: 22px;
+
+        min-width: 22px;
+
+        flex: 0 0 22px;
+    }
+
+
+    /* QR */
+
+    .qr-payment {
+        padding: 15px;
+    }
+
+    .qr-payment img {
+        width: 200px;
+    }
+
+
+    /* PAYMENT PROOF */
+
+    .payment-proof {
+        padding: 15px;
+    }
+
+
+    /* PRICE SUMMARY */
+
+    .checkout-price-summary {
+        padding: 16px;
+    }
+
+    .checkout-total {
+        font-size: 20px;
+    }
+
+
+    /* CONFIRMATION */
+
+    .confirmation {
+        padding: 15px;
+    }
+
+    .confirmation-box {
+        padding:
+            35px 20px;
+    }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONES
+============================================================ */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+        font-size: 36px;
+
+        letter-spacing: 3px;
+    }
+
+    .hero-subtitle {
+        font-size: 15px !important;
+    }
+
+    .order-type {
+        gap: 15px;
+    }
+
+    .payment-option {
+        font-size: 15px;
+    }
+
+    .qr-payment img {
+        width: 180px;
     }
 
 }
