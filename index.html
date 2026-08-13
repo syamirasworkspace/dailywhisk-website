@@ -2,11 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>DailyWhisk</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
 
 <body>
@@ -19,6 +25,7 @@
         id="cart-button"
         class="cart-button"
         type="button"
+        aria-label="Open cart"
     >
         🛒
         <span id="cart-count">0</span>
@@ -26,7 +33,7 @@
 
 
     <!-- =====================================================
-         LANDING PAGE
+         HERO
     ====================================================== -->
 
     <section class="hero">
@@ -86,7 +93,7 @@
 
 
         <!-- =================================================
-             MATCHA SERIES
+             MATCHA
         ================================================== -->
 
         <h2 class="series-title">
@@ -94,7 +101,6 @@
         </h2>
 
         <div class="menu-grid">
-
 
             <div class="drink-card">
 
@@ -165,7 +171,7 @@
 
 
         <!-- =================================================
-             CHOCOLATE SERIES
+             CHOCOLATE
         ================================================== -->
 
         <h2 class="series-title">
@@ -173,7 +179,6 @@
         </h2>
 
         <div class="menu-grid">
-
 
             <div class="drink-card">
 
@@ -222,7 +227,7 @@
 
 
         <!-- =================================================
-             TARO SERIES
+             TARO
         ================================================== -->
 
         <h2 class="series-title">
@@ -230,7 +235,6 @@
         </h2>
 
         <div class="menu-grid">
-
 
             <div class="drink-card">
 
@@ -325,7 +329,10 @@
          CART
     ====================================================== -->
 
-    <section class="cart">
+    <section
+        class="cart"
+        aria-label="Shopping cart"
+    >
 
         <div class="cart-header">
 
@@ -336,6 +343,7 @@
             <button
                 id="close-cart"
                 type="button"
+                aria-label="Close cart"
             >
                 ✕
             </button>
@@ -401,6 +409,7 @@
             <button
                 id="close-checkout"
                 type="button"
+                aria-label="Close checkout"
             >
                 ✕
             </button>
@@ -410,8 +419,7 @@
 
         <form id="checkout-form">
 
-
-            <!-- CUSTOMER NAME -->
+            <!-- CUSTOMER -->
 
             <label for="customer-name">
                 Name
@@ -424,8 +432,6 @@
                 required
             >
 
-
-            <!-- PHONE -->
 
             <label for="customer-phone">
                 Phone Number
@@ -456,7 +462,9 @@
                         checked
                     >
 
-                    🛍️ Pickup
+                    <span>
+                        🛍️ Pickup
+                    </span>
 
                 </label>
 
@@ -469,7 +477,9 @@
                         value="delivery"
                     >
 
-                    🚚 Delivery
+                    <span>
+                        🚚 Delivery
+                    </span>
 
                 </label>
 
@@ -535,7 +545,7 @@
 
 
             <!-- =================================================
-                 PROMO CODE
+                 PROMO
             ================================================== -->
 
             <div class="promo-section">
@@ -570,9 +580,7 @@
             </div>
 
 
-            <!-- =================================================
-                 PAYMENT METHOD
-            ================================================== -->
+            <!-- PAYMENT -->
 
             <label>
                 Payment Method
@@ -664,12 +672,9 @@
             </div>
 
 
-            <!-- =================================================
-                 PRICE SUMMARY
-            ================================================== -->
+            <!-- PRICE SUMMARY -->
 
             <div class="checkout-price-summary">
-
 
                 <div class="price-row">
 
@@ -713,8 +718,6 @@
                 </div>
 
 
-                <!-- TOTAL -->
-
                 <div class="checkout-total">
 
                     <span>
@@ -739,7 +742,6 @@
                 PLACE ORDER
             </button>
 
-
         </form>
 
     </section>
@@ -756,21 +758,17 @@
 
         <div class="confirmation-box">
 
-
-            <!-- CLOSE -->
-
             <button
                 id="close-confirmation"
                 type="button"
+                aria-label="Close confirmation"
             >
                 ✕
             </button>
 
 
-            <!-- ICON -->
-
             <div class="confirmation-icon">
-                ✦
+                ✓
             </div>
 
 
@@ -790,11 +788,11 @@
 
 
             <!-- =================================================
-                 ORDER DETAILS
+                 IMPORTANT:
+                 LABEL + VALUE ARE KEPT CLOSE TOGETHER
             ================================================== -->
 
             <div class="confirmation-details">
-
 
                 <p>
 
@@ -802,7 +800,8 @@
                         Order Type:
                     </strong>
 
-                    <span id="confirmation-type"></span>
+                    <span id="confirmation-type">
+                    </span>
 
                 </p>
 
@@ -813,7 +812,8 @@
                         Delivery Area:
                     </strong>
 
-                    <span id="confirmation-area"></span>
+                    <span id="confirmation-area">
+                    </span>
 
                 </p>
 
@@ -824,7 +824,8 @@
                         Payment:
                     </strong>
 
-                    <span id="confirmation-payment"></span>
+                    <span id="confirmation-payment">
+                    </span>
 
                 </p>
 
@@ -835,7 +836,8 @@
                         Payment Proof:
                     </strong>
 
-                    <span id="confirmation-proof"></span>
+                    <span id="confirmation-proof">
+                    </span>
 
                 </p>
 
@@ -853,8 +855,6 @@
                 </p>
 
 
-                <!-- DISCOUNT -->
-
                 <p>
 
                     <strong>
@@ -868,8 +868,6 @@
                 </p>
 
 
-                <!-- TOTAL -->
-
                 <p class="confirmation-total-row">
 
                     <strong>
@@ -882,24 +880,15 @@
 
                 </p>
 
-
             </div>
 
 
-            <!-- THANK YOU -->
-
             <p class="confirmation-thanks">
-
                 Thank you for choosing DailyWhisk.
-
                 <br>
-
                 We truly appreciate your order. ♡
-
             </p>
 
-
-            <!-- BACK -->
 
             <button
                 id="back-to-menu"
@@ -907,7 +896,6 @@
             >
                 BACK TO MENU
             </button>
-
 
         </div>
 
