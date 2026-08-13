@@ -1,79 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DailyWhisk</title>
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-
-    <!-- =====================================================
-         CART BUTTON
-    ====================================================== -->
-
-    <button
-        id="cart-button"
-        class="cart-button"
-        type="button"
-    >
-
+    <!-- CART BUTTON -->
+    <button id="cart-button" class="cart-button" type="button">
         🛒
-
-        <span id="cart-count">
-            0
-        </span>
-
+        <span id="cart-count">0</span>
     </button>
 
 
-
     <!-- =====================================================
-         HERO
+         LANDING PAGE
     ====================================================== -->
 
     <section class="hero">
 
         <div class="hero-content">
 
-            <h1>
-                DAILYWHISK
-            </h1>
+            <p class="hero-small">A LITTLE SOMETHING TO WHISK YOUR DAY</p>
+
+            <h1>DAILYWHISK</h1>
 
             <p class="hero-subtitle">
                 Matcha • Chocolate • Taro
             </p>
 
-            <p>
+            <p class="hero-description">
                 Whisked fresh, made for your day.
             </p>
 
             <button
                 type="button"
+                class="hero-order-button"
                 onclick="document.querySelector('.menu').scrollIntoView({behavior:'smooth'})"
             >
                 ORDER NOW
             </button>
 
+            <p class="by-syamira">
+                By Syamira
+            </p>
+
         </div>
 
     </section>
-
 
 
     <!-- =====================================================
@@ -82,24 +59,19 @@
 
     <section class="menu">
 
-        <h2>
-            OUR MENU
-        </h2>
+        <div class="section-heading">
+            <p>WHISKED WITH LOVE</p>
+            <h2>OUR MENU</h2>
+        </div>
 
 
-
-        <!-- =================================================
-             MATCHA SERIES
-        ================================================== -->
+        <!-- MATCHA -->
 
         <h2 class="series-title">
             Matcha Series
         </h2>
 
         <div class="menu-grid">
-
-
-            <!-- MATCHA LATTE -->
 
             <div class="drink-card">
 
@@ -108,71 +80,47 @@
                     alt="Matcha Latte"
                 >
 
-                <h3>
-                    Matcha Latte
-                </h3>
+                <h3>Matcha Latte</h3>
 
-                <p class="price">
-                    RM8.00
-                </p>
+                <p class="price">RM8.00</p>
 
-                <button
-                    type="button"
-                >
+                <button type="button">
                     ADD TO CART
                 </button>
 
             </div>
 
 
-
-            <!-- MATCHA STRAWBERRY -->
-
             <div class="drink-card">
 
                 <img
-                    src="Images/matcha-strawberry.png"
+                    src="Images/matcha-latte.png"
                     alt="Matcha Strawberry"
                 >
 
-                <h3>
-                    Matcha Strawberry
-                </h3>
+                <h3>Matcha Strawberry</h3>
 
-                <p class="price">
-                    RM9.00
-                </p>
+                <p class="price">RM9.00</p>
 
-                <button
-                    type="button"
-                >
+                <button type="button">
                     ADD TO CART
                 </button>
 
             </div>
 
 
-
-            <!-- MATCHA TARO -->
-
             <div class="drink-card">
 
                 <img
-                    src="Images/taro-latte.png"
+                    src="Images/matcha-latte.png"
                     alt="Matcha Taro Latte"
                 >
 
-                <h3>
-                    Matcha Taro Latte
-                </h3>
+                <h3>Matcha Taro Latte</h3>
 
-                <p class="price">
-                    RM9.00
-                </p>
+                <p class="price">RM9.00</p>
 
-                <button
-                    type="button"
-                >
+                <button type="button">
                     ADD TO CART
                 </button>
 
@@ -181,10 +129,7 @@
         </div>
 
 
-
-        <!-- =================================================
-             CHOCOLATE SERIES
-        ================================================== -->
+        <!-- CHOCOLATE -->
 
         <h2 class="series-title">
             Chocolate Series
@@ -192,54 +137,36 @@
 
         <div class="menu-grid">
 
-
-            <!-- CHOCOLATE LATTE -->
-
             <div class="drink-card">
 
                 <img
-                    src="Images/chocolate-latte.png"
+                    src="Images/matcha-latte.png"
                     alt="Chocolate Latte"
                 >
 
-                <h3>
-                    Chocolate Latte
-                </h3>
+                <h3>Chocolate Latte</h3>
 
-                <p class="price">
-                    RM6.00
-                </p>
+                <p class="price">RM6.00</p>
 
-                <button
-                    type="button"
-                >
+                <button type="button">
                     ADD TO CART
                 </button>
 
             </div>
 
 
-
-            <!-- STRAWBERRY CHOCOLATE -->
-
             <div class="drink-card">
 
                 <img
-                    src="Images/chocolate-latte.png"
+                    src="Images/matcha-latte.png"
                     alt="Strawberry Chocolate"
                 >
 
-                <h3>
-                    Strawberry Chocolate
-                </h3>
+                <h3>Strawberry Chocolate</h3>
 
-                <p class="price">
-                    RM7.00
-                </p>
+                <p class="price">RM7.00</p>
 
-                <button
-                    type="button"
-                >
+                <button type="button">
                     ADD TO CART
                 </button>
 
@@ -248,10 +175,7 @@
         </div>
 
 
-
-        <!-- =================================================
-             TARO SERIES
-        ================================================== -->
+        <!-- TARO -->
 
         <h2 class="series-title">
             Taro Series
@@ -259,54 +183,36 @@
 
         <div class="menu-grid">
 
-
-            <!-- TARO LATTE -->
-
             <div class="drink-card">
 
                 <img
-                    src="Images/taro-latte.png"
+                    src="Images/matcha-latte.png"
                     alt="Taro Latte"
                 >
 
-                <h3>
-                    Taro Latte
-                </h3>
+                <h3>Taro Latte</h3>
 
-                <p class="price">
-                    RM7.00
-                </p>
+                <p class="price">RM7.00</p>
 
-                <button
-                    type="button"
-                >
+                <button type="button">
                     ADD TO CART
                 </button>
 
             </div>
 
 
-
-            <!-- TARO CREAM -->
-
             <div class="drink-card">
 
                 <img
-                    src="Images/taro-latte.png"
+                    src="Images/matcha-latte.png"
                     alt="Taro Cream Latte"
                 >
 
-                <h3>
-                    Taro Cream Latte
-                </h3>
+                <h3>Taro Cream Latte</h3>
 
-                <p class="price">
-                    RM7.50
-                </p>
+                <p class="price">RM7.50</p>
 
-                <button
-                    type="button"
-                >
+                <button type="button">
                     ADD TO CART
                 </button>
 
@@ -316,6 +222,44 @@
 
     </section>
 
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <h2>DAILYWHISK</h2>
+
+        <p>
+            Whisked fresh, made for your day.
+        </p>
+
+        <div class="social-links">
+
+            <a
+                href="https://www.instagram.com/dailywhisk.my?igsh=MWVnZjV5dW9kNzU2Zw%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Instagram
+            </a>
+
+            <a
+                href="https://www.tiktok.com/@dailywhisk.my?_r=1&_t=ZS-98q59yYsXvJ"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                TikTok
+            </a>
+
+        </div>
+
+        <p class="footer-credit">
+            © DailyWhisk • By Syamira
+        </p>
+
+    </footer>
 
 
     <!-- =====================================================
@@ -326,9 +270,7 @@
 
         <div class="cart-header">
 
-            <h2>
-                YOUR CART
-            </h2>
+            <h2>YOUR CART</h2>
 
             <button
                 id="close-cart"
@@ -363,7 +305,6 @@
 
             </div>
 
-
             <button
                 id="checkout-button"
                 type="button"
@@ -376,7 +317,6 @@
     </section>
 
 
-
     <!-- =====================================================
          CHECKOUT
     ====================================================== -->
@@ -385,9 +325,13 @@
 
         <div class="checkout-header">
 
-            <h2>
-                YOUR ORDER
-            </h2>
+            <div>
+                <p class="checkout-small">
+                    ALMOST THERE
+                </p>
+
+                <h2>YOUR ORDER</h2>
+            </div>
 
             <button
                 id="close-checkout"
@@ -402,7 +346,7 @@
         <form id="checkout-form">
 
 
-            <!-- NAME -->
+            <!-- CUSTOMER -->
 
             <label for="customer-name">
                 Name
@@ -416,9 +360,6 @@
             >
 
 
-
-            <!-- PHONE -->
-
             <label for="customer-phone">
                 Phone Number
             </label>
@@ -429,7 +370,6 @@
                 placeholder="01X-XXXXXXX"
                 required
             >
-
 
 
             <!-- ORDER TYPE -->
@@ -469,8 +409,7 @@
             </div>
 
 
-
-            <!-- DELIVERY AREA -->
+            <!-- DELIVERY -->
 
             <div
                 id="delivery-section"
@@ -481,9 +420,7 @@
                     Delivery Area
                 </label>
 
-                <select
-                    id="delivery-area"
-                >
+                <select id="delivery-area">
 
                     <option value="">
                         Select your area
@@ -499,7 +436,6 @@
                 </p>
 
             </div>
-
 
 
             <!-- ADDRESS -->
@@ -518,7 +454,6 @@
             ></textarea>
 
 
-
             <!-- NOTES -->
 
             <label for="customer-notes">
@@ -531,6 +466,41 @@
                 rows="3"
             ></textarea>
 
+
+            <!-- =================================================
+                 PROMO CODE
+            ================================================== -->
+
+            <div class="promo-section">
+
+                <label for="promo-code">
+                    Promo Code
+                </label>
+
+                <div class="promo-input-row">
+
+                    <input
+                        type="text"
+                        id="promo-code"
+                        placeholder="Enter promo code"
+                        autocomplete="off"
+                    >
+
+                    <button
+                        type="button"
+                        id="apply-promo-button"
+                    >
+                        APPLY
+                    </button>
+
+                </div>
+
+                <p
+                    id="promo-message"
+                    class="promo-message"
+                ></p>
+
+            </div>
 
 
             <!-- PAYMENT -->
@@ -574,8 +544,7 @@
             </div>
 
 
-
-            <!-- QR PAYMENT -->
+            <!-- QR -->
 
             <div
                 class="qr-payment"
@@ -598,7 +567,6 @@
             </div>
 
 
-
             <!-- PAYMENT PROOF -->
 
             <div
@@ -611,8 +579,7 @@
                 </label>
 
                 <p class="payment-proof-text">
-                    Please upload a screenshot
-                    of your payment.
+                    Please upload a screenshot of your payment.
                 </p>
 
                 <input
@@ -628,7 +595,6 @@
             </div>
 
 
-
             <!-- PRICE SUMMARY -->
 
             <div class="checkout-price-summary">
@@ -641,6 +607,22 @@
 
                     <strong>
                         RM<span id="checkout-subtotal">0.00</span>
+                    </strong>
+
+                </div>
+
+
+                <div
+                    class="price-row discount-row"
+                    id="discount-row"
+                >
+
+                    <span>
+                        Discount
+                    </span>
+
+                    <strong>
+                        -RM<span id="checkout-discount">0.00</span>
                     </strong>
 
                 </div>
@@ -674,7 +656,6 @@
             </div>
 
 
-
             <!-- PLACE ORDER -->
 
             <button
@@ -690,7 +671,6 @@
     </section>
 
 
-
     <!-- =====================================================
          CONFIRMATION
     ====================================================== -->
@@ -702,7 +682,6 @@
 
         <div class="confirmation-box">
 
-
             <button
                 id="close-confirmation"
                 type="button"
@@ -712,8 +691,13 @@
 
 
             <div class="confirmation-icon">
-                ✓
+                ✦
             </div>
+
+
+            <p class="confirmation-small">
+                THANK YOU
+            </p>
 
 
             <h2>
@@ -766,17 +750,37 @@
 
                 <p>
                     <strong>
+                        Promo:
+                    </strong>
+
+                    <span id="confirmation-promo">None</span>
+                </p>
+
+
+                <p>
+                    <strong>
+                        Discount:
+                    </strong>
+
+                    RM<span id="confirmation-discount">0.00</span>
+                </p>
+
+
+                <p>
+                    <strong>
                         Total:
                     </strong>
 
-                    RM<span id="confirmation-total"></span>
+                    RM<span id="confirmation-total">0.00</span>
                 </p>
 
             </div>
 
 
             <p class="confirmation-thanks">
-                We'll see you soon! 🧋
+                Thank you for choosing DailyWhisk.
+                <br>
+                We truly appreciate your order. ♡
             </p>
 
 
@@ -787,15 +791,14 @@
                 BACK TO MENU
             </button>
 
-
         </div>
 
     </section>
 
 
+    <!-- SCRIPT -->
 
     <script src="script.js"></script>
 
 </body>
-
 </html>
