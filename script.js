@@ -28,6 +28,7 @@ const GOOGLE_SCRIPT_URL =
 // ============================================================
 
 let appliedPromoCode = "";
+
 let appliedDiscount = 0;
 
 
@@ -459,6 +460,7 @@ function updateWebsiteMenu() {
 
 // ============================================================
 // CART OPEN
+// FIXED TO USE .is-open
 // ============================================================
 
 if (cartButton) {
@@ -467,9 +469,13 @@ if (cartButton) {
         "click",
         function() {
 
-            cartPanel.classList.add(
-                "cart-open"
-            );
+            if (cartPanel) {
+
+                cartPanel.classList.add(
+                    "is-open"
+                );
+
+            }
 
         }
     );
@@ -487,9 +493,13 @@ if (closeCartButton) {
         "click",
         function() {
 
-            cartPanel.classList.remove(
-                "cart-open"
-            );
+            if (cartPanel) {
+
+                cartPanel.classList.remove(
+                    "is-open"
+                );
+
+            }
 
         }
     );
@@ -699,35 +709,39 @@ function updateCart() {
 
             itemElement.innerHTML = `
 
-                <strong>
-                    ${item.name}
-                </strong>
+                <div>
 
-                <div class="quantity-controls">
+                    <strong>
+                        ${item.name}
+                    </strong>
 
-                    <button
-                        type="button"
-                        onclick="decreaseQuantity(${index})"
-                    >
-                        −
-                    </button>
+                    <div class="quantity-controls">
 
-                    <span>
-                        ${item.quantity}
-                    </span>
+                        <button
+                            type="button"
+                            onclick="decreaseQuantity(${index})"
+                        >
+                            −
+                        </button>
 
-                    <button
-                        type="button"
-                        onclick="increaseQuantity(${index})"
-                    >
-                        +
-                    </button>
+                        <span>
+                            ${item.quantity}
+                        </span>
+
+                        <button
+                            type="button"
+                            onclick="increaseQuantity(${index})"
+                        >
+                            +
+                        </button>
+
+                    </div>
 
                 </div>
 
-                <p>
+                <strong>
                     RM${itemTotal.toFixed(2)}
-                </p>
+                </strong>
 
             `;
 
@@ -744,6 +758,7 @@ function updateCart() {
         }
     );
 
+
     if (cart.length === 0) {
 
         cartItems.innerHTML =
@@ -753,6 +768,7 @@ function updateCart() {
 
     }
 
+
     if (cartTotal) {
 
         cartTotal.textContent =
@@ -760,12 +776,14 @@ function updateCart() {
 
     }
 
+
     if (cartCount) {
 
         cartCount.textContent =
             totalQuantity;
 
     }
+
 
     updateCheckoutTotals();
 }
@@ -874,6 +892,9 @@ function resetPromo() {
         promoMessage.textContent =
             "";
 
+        promoMessage.className =
+            "promo-message";
+
     }
 
     updateCheckoutTotals();
@@ -881,7 +902,7 @@ function resetPromo() {
 
 
 // ============================================================
-// APPLY PROMO CODE
+// APPLY PROMO
 // ============================================================
 
 if (applyPromoButton) {
@@ -904,6 +925,9 @@ if (applyPromoButton) {
                     promoMessage.textContent =
                         "Please enter a promo code.";
 
+                    promoMessage.className =
+                        "promo-message error";
+
                 }
 
                 return;
@@ -916,6 +940,9 @@ if (applyPromoButton) {
 
                     promoMessage.textContent =
                         "Please add a drink first.";
+
+                    promoMessage.className =
+                        "promo-message error";
 
                 }
 
@@ -982,6 +1009,9 @@ if (applyPromoButton) {
                                 "."
                             );
 
+                        promoMessage.className =
+                            "promo-message success";
+
                     }
 
                 } else {
@@ -998,6 +1028,9 @@ if (applyPromoButton) {
                         promoMessage.textContent =
                             result.message ||
                             "This promo code is invalid or unavailable.";
+
+                        promoMessage.className =
+                            "promo-message error";
 
                     }
 
@@ -1026,6 +1059,9 @@ if (applyPromoButton) {
 
                     promoMessage.textContent =
                         "Unable to check promo code. Please try again.";
+
+                    promoMessage.className =
+                        "promo-message error";
 
                 }
 
@@ -1094,6 +1130,7 @@ const orderTypeButtons =
         'input[name="order-type"]'
     );
 
+
 orderTypeButtons.forEach(
     function(radio) {
 
@@ -1110,7 +1147,7 @@ orderTypeButtons.forEach(
 
                         deliverySection
                             .classList.add(
-                                "delivery-visible"
+                                "is-visible"
                             );
 
                     }
@@ -1144,7 +1181,7 @@ orderTypeButtons.forEach(
 
                         deliverySection
                             .classList.remove(
-                                "delivery-visible"
+                                "is-visible"
                             );
 
                     }
@@ -1201,7 +1238,7 @@ orderTypeButtons.forEach(
 
 
 // ============================================================
-// CHECKOUT
+// CHECKOUT OPEN
 // ============================================================
 
 if (checkoutButton) {
@@ -1219,13 +1256,24 @@ if (checkoutButton) {
                 return;
             }
 
-            cartPanel.classList.remove(
-                "cart-open"
-            );
 
-            checkoutPanel.classList.add(
-                "checkout-open"
-            );
+            if (cartPanel) {
+
+                cartPanel.classList.remove(
+                    "is-open"
+                );
+
+            }
+
+
+            if (checkoutPanel) {
+
+                checkoutPanel.classList.add(
+                    "is-open"
+                );
+
+            }
+
 
             updateCheckoutTotals();
 
@@ -1234,18 +1282,27 @@ if (checkoutButton) {
 }
 
 
+// ============================================================
+// CHECKOUT CLOSE
+// ============================================================
+
 if (closeCheckoutButton) {
 
     closeCheckoutButton.addEventListener(
         "click",
         function() {
 
-            checkoutPanel.classList.remove(
-                "checkout-open"
-            );
+            if (checkoutPanel) {
+
+                checkoutPanel.classList.remove(
+                    "is-open"
+                );
+
+            }
 
         }
     );
+
 }
 
 
@@ -1258,20 +1315,24 @@ const paymentButtons =
         'input[name="payment-method"]'
     );
 
+
 const qrPayment =
     document.getElementById(
         "qr-payment"
     );
+
 
 const paymentProof =
     document.getElementById(
         "payment-proof"
     );
 
+
 const paymentScreenshot =
     document.getElementById(
         "payment-screenshot"
     );
+
 
 paymentButtons.forEach(
     function(radio) {
@@ -1362,6 +1423,7 @@ function fileToBase64(file) {
             const reader =
                 new FileReader();
 
+
             reader.onload =
                 function() {
 
@@ -1377,6 +1439,7 @@ function fileToBase64(file) {
 
                 };
 
+
             reader.onerror =
                 function(error) {
 
@@ -1385,6 +1448,7 @@ function fileToBase64(file) {
                     );
 
                 };
+
 
             reader.readAsDataURL(
                 file
@@ -1440,6 +1504,7 @@ async function sendOrderToGoogleSheets(
         );
 
         return false;
+
     }
 }
 
@@ -1452,6 +1517,7 @@ const checkoutForm =
     document.getElementById(
         "checkout-form"
     );
+
 
 if (checkoutForm) {
 
@@ -1502,7 +1568,7 @@ if (checkoutForm) {
                 selectedOrderType.value;
 
 
-            // DELIVERY VALIDATION
+            // DELIVERY
 
             if (
                 orderType ===
@@ -1783,7 +1849,7 @@ if (checkoutForm) {
                 );
 
 
-            // CONFIRMATION
+            // CONFIRMATION ELEMENTS
 
             const confirmation =
                 document.getElementById(
@@ -1839,6 +1905,8 @@ if (checkoutForm) {
                 );
 
 
+            // MESSAGE
+
             if (confirmationMessage) {
 
                 confirmationMessage.textContent =
@@ -1851,6 +1919,8 @@ if (checkoutForm) {
             }
 
 
+            // ORDER TYPE
+
             if (confirmationType) {
 
                 confirmationType.textContent =
@@ -1860,6 +1930,8 @@ if (checkoutForm) {
 
             }
 
+
+            // DELIVERY AREA
 
             if (confirmationArea) {
 
@@ -1874,6 +1946,8 @@ if (checkoutForm) {
             }
 
 
+            // PAYMENT
+
             if (confirmationPayment) {
 
                 confirmationPayment.textContent =
@@ -1883,6 +1957,8 @@ if (checkoutForm) {
 
             }
 
+
+            // PAYMENT PROOF
 
             if (confirmationProof) {
 
@@ -1894,6 +1970,8 @@ if (checkoutForm) {
             }
 
 
+            // PROMO
+
             if (confirmationPromo) {
 
                 confirmationPromo.textContent =
@@ -1904,6 +1982,8 @@ if (checkoutForm) {
             }
 
 
+            // DISCOUNT
+
             if (confirmationDiscount) {
 
                 confirmationDiscount.textContent =
@@ -1911,6 +1991,8 @@ if (checkoutForm) {
 
             }
 
+
+            // TOTAL
 
             if (confirmationTotal) {
 
@@ -1920,19 +2002,23 @@ if (checkoutForm) {
             }
 
 
+            // CLOSE CHECKOUT
+
             if (checkoutPanel) {
 
                 checkoutPanel.classList.remove(
-                    "checkout-open"
+                    "is-open"
                 );
 
             }
 
 
+            // SHOW CONFIRMATION
+
             if (confirmation) {
 
                 confirmation.classList.add(
-                    "confirmation-open"
+                    "is-open"
                 );
 
             }
@@ -1943,6 +2029,7 @@ if (checkoutForm) {
             cart = [];
 
             updateCart();
+
 
             checkoutForm.reset();
 
@@ -1969,6 +2056,9 @@ if (checkoutForm) {
                 promoMessage.textContent =
                     "";
 
+                promoMessage.className =
+                    "promo-message";
+
             }
 
 
@@ -1993,7 +2083,7 @@ if (checkoutForm) {
 
                 deliverySection
                     .classList.remove(
-                        "delivery-visible"
+                        "is-visible"
                     );
 
             }
@@ -2081,6 +2171,7 @@ const closeConfirmation =
         "close-confirmation"
     );
 
+
 const backToMenu =
     document.getElementById(
         "back-to-menu"
@@ -2102,7 +2193,7 @@ if (closeConfirmation) {
 
                 confirmation
                     .classList.remove(
-                        "confirmation-open"
+                        "is-open"
                     );
 
             }
@@ -2128,7 +2219,7 @@ if (backToMenu) {
 
                 confirmation
                     .classList.remove(
-                        "confirmation-open"
+                        "is-open"
                     );
 
             }
@@ -2199,7 +2290,7 @@ if (deliverySection) {
 
     deliverySection
         .classList.remove(
-            "delivery-visible"
+            "is-visible"
         );
 
 }
